@@ -3,30 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/activity_main.xml" value="0.22056159420289856" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/createdatabaselayout.xml" value="0.22056159420289856" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/createtablelayout.xml" value="0.264" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/droptablelayout.xml" value="0.2140625" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/fragment_drop_table.xml" value="0.22056159420289856" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/fragment_insert_into.xml" value="0.22056159420289856" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/homelayout.xml" value="0.1703125" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/insertintolayout.xml" value="0.2" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/insertnewline.xml" value="0.4" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/selectlayout.xml" value="0.22056159420289856" />
-        <entry key="..\:/opencv/opencv/build/MySqlTester/app/src/main/res/layout/selectlayoutitem.xml" value="0.536" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/create_table_layout.xml" value="0.4" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/createtablelayout.xml" value="0.264" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/default_layout.xml" value="0.264" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/fragment_create_t_able.xml" value="0.20471014492753623" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/fragment_create_table.xml" value="0.20018115942028986" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/fragment_home.xml" value="0.20471014492753623" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/home_layout.xml" value="0.1452991452991453" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/homelayout.xml" value="0.264" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/listtemplate.xml" value="0.20471014492753623" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/newline.xml" value="0.2" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/layout/tesztlay.xml" value="0.20018115942028986" />
-        <entry key="..\:/opencv/opencv/build/RXjavaTutorial/app/src/main/res/menu/ct_variables_context_menu.xml" value="0.14479166666666668" />
+        <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_parse.xml" value="0.2223731884057971" />
       </map>
     </option>
   </component>

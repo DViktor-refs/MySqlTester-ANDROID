@@ -1,29 +1,16 @@
 <resources>
-    <string name="app_name">MySqlTester</string>
-
-    <string-array name="mainmenuspinneritems">
-        <item>Test server</item>
-        <item>Create Table</item>
-        <item>Drop Table</item>
-        <item>Select From</item>
-        <item>Insert Into</item>
-    </string-array>
-
-    <string-array name="ct_variables_spinneritems">
-        <item>VARCHAR(10)</item>
-        <item>VARCHAR(30)</item>
-        <item>VARCHAR</item>
-        <item>INT</item>
-        <item>TINYINT(1)</item>
-        <item>DATE</item>
-        <item>TIME</item>
-        <item>DATETIME</item>
-        <item>TINYINT</item>
-
-    </string-array>
-
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
+    <string name="app_name">APItester</string>
+    <string name="text_main_title">User form</string>
+    <string name="text_id">id:</string>
+    <string name="text_userid">userID</string>
+    <string name="text_title">Title</string>
+    <string name="et_id_hint">id</string>
+    <string name="et_userid_hint">user id</string>
+    <string name="et_title_hint">title</string>
+    <string name="et_body_hint">body</string>
+    <string name="text_back_parseactivity">BACK</string>
+    <string name="btn_parse_text">parse</string>
+    <string name="btn_left"><![CDATA[<<]]></string>
+    <string name="btn_right"><![CDATA[>>]]></string>
+    <string name="text_body">body</string>
 </resources>

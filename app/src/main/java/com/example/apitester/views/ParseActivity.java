@@ -1,6 +1,7 @@
 package com.example.apitester.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,13 +18,14 @@ import com.example.apitester.API_retrofit.API;
 import com.example.apitester.R;
 import com.example.apitester.model_retrofit.Data;
 import com.example.apitester.API_retrofit.StartRetrofit;
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ParseActivity extends AppCompatActivity implements mvpinterfaces{
+public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Model {
 
     Retrofit retrofit;
     Button btn_back;

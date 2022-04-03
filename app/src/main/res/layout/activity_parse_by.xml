@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.ParseByActivity">
+
+    <TextView
+        android:id="@+id/tv_parseby_id"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_parseby_userid"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="userid"
+        app:layout_constraintStart_toStartOf="@+id/tv_parseby_id"
+        app:layout_constraintTop_toBottomOf="@+id/tv_parseby_id" />
+
+    <TextView
+        android:id="@+id/tv_parseby_title"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Title"
+        app:layout_constraintStart_toStartOf="@+id/tv_parseby_userid"
+        app:layout_constraintTop_toBottomOf="@+id/tv_parseby_userid" />
+
+    <EditText
+        android:id="@+id/et_parseby_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_id"
+        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
+        app:layout_constraintTop_toTopOf="@+id/tv_parseby_id" />
+
+    <EditText
+        android:id="@+id/et_parseby_userid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_userid"
+        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
+        app:layout_constraintTop_toTopOf="@+id/tv_parseby_userid" />
+
+    <EditText
+        android:id="@+id/et_parseby_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_title"
+        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
+        app:layout_constraintTop_toTopOf="@+id/tv_parseby_title" />
+
+    <TextView
+        android:id="@+id/tv_parseby_id_rndtbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="RND"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_parseby_id" />
+
+    <TextView
+        android:id="@+id/tv_parseby_userid_rndtbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="RND"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_parseby_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_parseby_id" />
+
+    <TextView
+        android:id="@+id/tv_parseby_title_rndtbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="RND"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/et_parseby_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_parseby_userid" />
+
+    <ScrollView
+        android:id="@+id/scrollview_parseby"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_parseby_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_parseby_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_parseby_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

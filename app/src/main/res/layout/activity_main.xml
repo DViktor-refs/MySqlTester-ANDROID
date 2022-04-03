@@ -65,9 +65,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:hint="@string/et_id_hint"
         android:inputType="text"
         android:minHeight="48dp"
-        android:hint="@string/et_id_hint"
+        android:numeric="decimal"
         app:layout_constraintBottom_toBottomOf="@+id/tv_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_id"
@@ -81,9 +82,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:hint="@string/et_userid_hint"
         android:inputType="text"
         android:minHeight="48dp"
-        android:hint="@string/et_userid_hint"
+        android:numeric="decimal"
         app:layout_constraintBottom_toBottomOf="@+id/tv_userid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_id"
@@ -91,7 +93,7 @@
         app:layout_constraintVertical_bias="0.478" />
 
     <EditText
-        android:id="@+id/et_userid2"
+        android:id="@+id/et_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -136,9 +138,28 @@
         android:id="@+id/btn_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="POST"
         app:layout_constraintBottom_toBottomOf="@+id/btn_parse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_parse"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_parseby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parseby"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_parse"
+        app:layout_constraintEnd_toStartOf="@+id/btn_post"
         app:layout_constraintStart_toEndOf="@+id/btn_parse"
-        app:layout_constraintTop_toTopOf="@+id/btn_parse" />
+        app:layout_constraintTop_toTopOf="@+id/btn_parse"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

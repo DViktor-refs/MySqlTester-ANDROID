@@ -6,8 +6,11 @@ import java.util.List;
 
 public interface mvpinterfaces {
 
-    public interface RetrofitCallback {
-        void onSuccess(List<Data> data);
-        void onFailure(String message);
+    interface Model {
+        interface RetrofitCallback {
+            void onSuccess(List<Data> data);
+            void onFailure(String message);
+        }
     }
+
 }

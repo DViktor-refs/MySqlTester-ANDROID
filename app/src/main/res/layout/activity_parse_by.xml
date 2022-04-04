@@ -112,28 +112,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_parseby_userid" />
 
-    <ScrollView
+    <ListView
         android:id="@+id/scrollview_parseby"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_parseby_back"
+        app:layout_constraintBottom_toTopOf="@+id/btn_parseby"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_parseby_title">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+    </ListView>
 
     <Button
-        android:id="@+id/btn_parseby_back"
+        android:id="@+id/btn_parseby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Button"
+        android:background="@drawable/btn_selector"
+
+        android:text="ParseBy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

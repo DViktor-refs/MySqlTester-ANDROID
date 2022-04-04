@@ -130,6 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/btn_selector"
         android:text="@string/btn_parse_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_body" />
@@ -138,6 +139,8 @@
         android:id="@+id/btn_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_selector"
         android:text="POST"
         app:layout_constraintBottom_toBottomOf="@+id/btn_parse"
         app:layout_constraintEnd_toEndOf="parent"
@@ -148,6 +151,7 @@
         android:id="@+id/btn_parseby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_selector"
         android:text="Parseby"
         app:layout_constraintBottom_toBottomOf="@+id/btn_parse"
         app:layout_constraintEnd_toStartOf="@+id/btn_post"
@@ -155,11 +159,4 @@
         app:layout_constraintTop_toTopOf="@+id/btn_parse"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/btn_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

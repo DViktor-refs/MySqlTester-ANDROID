@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APItester">
         <activity
-            android:name=".views.MainActivity2"
-            android:exported="false" />
-        <activity
             android:name=".views.ParseByActivity"
             android:exported="false" />
         <activity

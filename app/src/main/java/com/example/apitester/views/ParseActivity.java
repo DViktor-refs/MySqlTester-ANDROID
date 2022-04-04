@@ -1,23 +1,24 @@
 package com.example.apitester.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.apitester.databinding.ActivityParseBinding;
 import com.example.apitester.interfaces.*;
 import com.example.apitester.API_retrofit.API;
 import com.example.apitester.R;
 import com.example.apitester.model_retrofit.Data;
 import com.example.apitester.API_retrofit.StartRetrofit;
+import com.example.apitester.model_retrofit.Parse;
 
 import java.util.List;
 import retrofit2.Call;
@@ -28,17 +29,12 @@ import retrofit2.Retrofit;
 public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Model {
 
     Retrofit retrofit;
-    Button btn_back;
-    Button btn_left;
-    Button btn_right;
-    TextView tv_id;
-    TextView tv_userid;
-    TextView tv_title;
-    TextView tv_body;
-    TextView tv_counter;
+
+    ActivityParseBinding viewBinding;
     int counter;
     int dataSize=0;
     Handler handler = new Handler();
+    View view;
 
     public static final int PAGING_DELAY_NORMAL = 150;
     public static final int PAGING_DELAY_SLOW = 250;
@@ -48,16 +44,17 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parse);
+        viewBinding = ActivityParseBinding.inflate(getLayoutInflater());
+        view = viewBinding.getRoot();
+        setContentView(view);
         counter = 0;
-        initalizeGUI();
         update();
-        setListeners();
+        initListeners();
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private void setListeners() {
-        btn_back.setOnClickListener(new View.OnClickListener() {
+    private void initListeners() {
+        viewBinding.btnParseactivityBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ParseActivity.this, MainActivity.class);
@@ -65,7 +62,7 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
             }
         });
 
-        btn_right.setOnTouchListener(new View.OnTouchListener() {
+        viewBinding.btnRight.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -78,7 +75,7 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
             }
         });
 
-        btn_left.setOnTouchListener(new View.OnTouchListener() {
+        viewBinding.btnLeft.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -93,15 +90,12 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
     }
 
     private void update() {
-        parse(new RetrofitCallback() {
+        Parse p = new Parse();
+        p.parse(getApplicationContext(), new RetrofitCallback() {
             @Override
             public void onSuccess(List<Data> data) {
                 dataSize = data.size();
-                tv_counter.setText(""+(counter+1));
-                tv_id.setText(""+data.get(counter).getId());
-                tv_userid.setText(""+data.get(counter).getUserId());
-                tv_title.setText(""+data.get(counter).getTitle());
-                tv_body.setText(""+data.get(counter).getText());
+                setTextViewsFromData(data);
             }
 
             @Override
@@ -111,6 +105,18 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
         });
     }
 
+
+
+    private void setTextViewsFromData(List<Data> data) {
+        viewBinding.tvCounter.setText(""+(counter+1));
+        viewBinding.tvIdresult.setText(""+data.get(counter).getId());
+        viewBinding.tvUseridresult.setText(""+data.get(counter).getUserId());
+        viewBinding.tvTitleresult.setText(""+data.get(counter).getTitle());
+        viewBinding.tvBodyresult.setText(""+data.get(counter).getText());
+    }
+
+    /*
+
     private void parse(RetrofitCallback callback) {
         retrofit = StartRetrofit.getRetrofit();
         API api = retrofit.create(API.class);
@@ -119,7 +125,7 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
             @Override
             public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
                 if (!response.isSuccessful()) {
-                    Log.d("error", "response unsuccessful");
+                    Toast.makeText(getApplicationContext(), "ERRORCODE: "+response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -134,6 +140,8 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
         });
     }
 
+    */
+
     Runnable increase = new Runnable() {
         @Override
         public void run() {
@@ -141,7 +149,6 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
 
             if(counter < dataSize-1) {
                 counter++;
-                Log.d("counter: ", ""+counter);
                 update();
             }
         }
@@ -154,20 +161,8 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
 
             if(counter > 0) {
                 counter--;
-                Log.d("counter: ", ""+counter);
                 update();
             }
         }
     };
-
-    private void initalizeGUI() {
-        btn_back = findViewById(R.id.btn_parseactivity_back);
-        btn_left = findViewById(R.id.btn_left);
-        btn_right = findViewById(R.id.btn_right);
-        tv_id = findViewById(R.id.tv_idresult);
-        tv_userid = findViewById(R.id.tv_useridresult);
-        tv_title = findViewById(R.id.tv_titleresult);
-        tv_body = findViewById(R.id.tv_bodyresult);
-        tv_counter = findViewById(R.id.tv_counter);
-    }
 }

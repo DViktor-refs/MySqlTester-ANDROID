@@ -19,6 +19,17 @@ public class Data {
         this.text = text;
     }
 
+    public Data( int id, int userId, String title, String text) {
+        this.userId = userId;
+        this.id = id;
+        this.title = title;
+        this.text = text;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getUserId() {
         return userId;
     }

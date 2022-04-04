@@ -51,6 +51,7 @@
         android:id="@+id/btn_parseactivity_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_selector"
         android:text="@string/text_back_parseactivity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_selector"
         android:text="@string/btn_left"
         app:layout_constraintBottom_toTopOf="@+id/btn_parseactivity_back"
         app:layout_constraintStart_toStartOf="parent" />
@@ -72,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_selector"
         android:text="@string/btn_right"
         app:layout_constraintBottom_toTopOf="@+id/btn_parseactivity_back"
         app:layout_constraintEnd_toEndOf="parent" />

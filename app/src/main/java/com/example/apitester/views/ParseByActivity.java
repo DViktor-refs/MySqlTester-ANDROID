@@ -19,6 +19,7 @@ import com.example.apitester.model_retrofit.Data;
 import com.example.apitester.model_retrofit.Parse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -107,26 +108,47 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
             @Override
             public void onClick(View v) {
                 Parse p = new Parse();
-                List<String> test = new ArrayList<>();
-                test.add("1");
-                test.add("1");
-                test.add("");
-
-                p.parseBy(test, getApplicationContext(), new RetrofitCallback() {
+                p.parseBy(fillParamList(), getApplicationContext(), new RetrofitCallback() {
                     @Override
                     public void onSuccess(List<Data> data) {
+                        Log.d("result data length: ", ""+data.size());
                         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, data);
                         viewBinding.scrollviewParseby.setAdapter(adapter);
-
                     }
 
                     @Override
                     public void onFailure(String message) {
-
+                        Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         });
+    }
+
+    private List<String> fillParamList() {
+
+        String id=""+viewBinding.etParsebyId.getText().toString();
+        if (!isNumeric(id)) {
+            id = "";
+        }
+
+        String userId=""+viewBinding.etParsebyUserid.getText().toString();
+        if (!isNumeric(userId)) {
+            userId = "";
+        }
+
+        String title=""+viewBinding.etParsebyTitle.getText().toString();
+        List<String> result = Arrays.asList(id, userId, title, "", "" );
+        return result;
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
     }
 }
 

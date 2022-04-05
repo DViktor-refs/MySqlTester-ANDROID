@@ -105,8 +105,6 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
         });
     }
 
-
-
     private void setTextViewsFromData(List<Data> data) {
         viewBinding.tvCounter.setText(""+(counter+1));
         viewBinding.tvIdresult.setText(""+data.get(counter).getId());

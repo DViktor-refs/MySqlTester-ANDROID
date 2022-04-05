@@ -49,7 +49,12 @@ public class Parse {
         this.context = context;
         retrofit = StartRetrofit.getRetrofit();
         API api = retrofit.create(API.class);
-        Call<List<Data>> call = api.getDataBy(/*Integer.parseInt(params.get(0))*/  null ,Integer.parseInt(params.get(1)), null, null, null);
+        Call<List<Data>> call = api.getDataBy(
+                params.get(0).isEmpty() ? null : Integer.parseInt(params.get(0)),
+                params.get(1).isEmpty() ? null : Integer.parseInt(params.get(1)),
+                params.get(2),
+                null,
+                null);
 
         call.enqueue(new Callback<List<Data>>() {
             @Override
@@ -58,8 +63,6 @@ public class Parse {
                     Toast.makeText(context.getApplicationContext(), "ERRORCODE: " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(context.getApplicationContext(), "d: "+response.body().get(0).getTitle(), Toast.LENGTH_SHORT).show();
-
                 callback.onSuccess(response.body());
             }
 
@@ -69,6 +72,7 @@ public class Parse {
             }
         });
     }
+
 
 
 

@@ -145,4 +145,15 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_right"
         app:layout_constraintStart_toEndOf="@+id/btn_left"
         app:layout_constraintTop_toTopOf="@+id/btn_right" />
+
+    <TextView
+        android:id="@+id/tv_parse_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="PARSE form"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

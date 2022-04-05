@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">APItester</string>
-    <string name="text_main_title">User form</string>
+    <string name="text_main_title">POST form</string>
     <string name="text_id">id:</string>
     <string name="text_userid">userID</string>
     <string name="text_title">Title</string>
@@ -13,4 +13,5 @@
     <string name="btn_left"><![CDATA[<<]]></string>
     <string name="btn_right"><![CDATA[>>]]></string>
     <string name="text_body">body</string>
+    <string name="parse_main_title">POST form</string>
 </resources>

@@ -49,10 +49,9 @@ public class Parse {
         this.context = context;
         retrofit = StartRetrofit.getRetrofit();
         API api = retrofit.create(API.class);
-        Call<List<Data>> call = api.getDataBy(
-                params.get(0).isEmpty() ? null : Integer.parseInt(params.get(0)),
+        Call<List<Data>> call = api.getDataBy(params.get(0).isEmpty() ? null : Integer.parseInt(params.get(0)),
                 params.get(1).isEmpty() ? null : Integer.parseInt(params.get(1)),
-                params.get(2),
+                params.get(2).isEmpty() ? null : params.get(2),
                 null,
                 null);
 

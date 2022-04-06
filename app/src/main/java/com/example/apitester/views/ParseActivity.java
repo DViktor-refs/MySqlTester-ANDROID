@@ -1,31 +1,20 @@
 package com.example.apitester.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
-
 import com.example.apitester.databinding.ActivityParseBinding;
 import com.example.apitester.interfaces.*;
-import com.example.apitester.API_retrofit.API;
-import com.example.apitester.R;
 import com.example.apitester.model_retrofit.Data;
-import com.example.apitester.API_retrofit.StartRetrofit;
 import com.example.apitester.model_retrofit.Parse;
-
 import java.util.List;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Model {
 
@@ -45,10 +34,24 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
         super.onCreate(savedInstanceState);
         viewBinding = ActivityParseBinding.inflate(getLayoutInflater());
         view = viewBinding.getRoot();
+        setfullScreen();
         setContentView(view);
         counter = 0;
         update();
         initListeners();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    private void setfullScreen() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -56,8 +59,7 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
         viewBinding.btnParseactivityBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ParseActivity.this, MainActivity.class);
-                startActivity(i);
+                finish();
             }
         });
 

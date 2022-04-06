@@ -1,22 +1,30 @@
 package com.example.apitester.views;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 import com.example.apitester.API_retrofit.API;
 import com.example.apitester.API_retrofit.StartRetrofit;
 import com.example.apitester.databinding.ActivityMainBinding;
 import com.example.apitester.model_retrofit.Data;
 import com.example.apitester.externalLibs.ObjectSerializer;
+import com.example.apitester.utils.ViewUtils;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,10 +34,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     private static final String SHAREDPREFNAME = "mainActivitySharedPrefs" ;
     private static final String SHAREDPREFPOSTNAME = "postFields" ;
-
     private static final String DATALISTNAME = "dataList";
     ActivityMainBinding viewBinding;
     Retrofit retrofit;
+    ViewUtils viewUtils = new ViewUtils();
 
 
     @Override
@@ -37,9 +45,21 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         viewBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = viewBinding.getRoot();
+        setFullScreen();
         setContentView(view);
         retrofit = StartRetrofit.getRetrofit();
         initListeners();
+    }
+
+    private void setFullScreen() {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+    @Override
+    public void onBackPressed() {
+        showQuitAlertDialog();
     }
 
     private void initListeners() {
@@ -77,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                             else {
                                 Data responseData = response.body();
                                 String toastMessage = "Code: " + response.code() + "\n" +
-                                        fillContentFromResponse(responseData);
+                                        fillContentFromResponse(Objects.requireNonNull(responseData));
                                 Log.d("response", toastMessage);
                                 Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
                             }
@@ -99,8 +119,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         int userId = Integer.parseInt(viewBinding.etUserid.getText().toString());
         String title = viewBinding.etTitle.getText().toString();
         String text = viewBinding.etBody.getText().toString();
-        Data data = (new Data(userId, title, text));
-        return data;
+        return new Data(userId, title, text);
     }
 
     private String fillContentFromResponse(Data responseData) {
@@ -113,15 +132,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     }
 
     private boolean isEveryFiledFilled() {
-        if (!viewBinding.etId.getText().toString().isEmpty()
-            && !viewBinding.etUserid.getText().toString().isEmpty()
-            && !viewBinding.etTitle.getText().toString().isEmpty()
-            && !viewBinding.etBody.getText().toString().isEmpty()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return !viewBinding.etId.getText().toString().isEmpty()
+                && !viewBinding.etUserid.getText().toString().isEmpty()
+                && !viewBinding.etTitle.getText().toString().isEmpty()
+                && !viewBinding.etBody.getText().toString().isEmpty();
     }
 
     private void saveSharedPrefs(List<Data> dataList){
@@ -132,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        editor.commit();
+        editor.apply();
     }
 
     private List<Data> loadSharedPrefs() {
@@ -145,6 +159,23 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public void showQuitAlertDialog() {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
+        alertBuilder.setTitle("Quit")
+                .setMessage("Are you sure?")
+                .setIconAttribute(android.R.attr.alertDialogIcon)
+                .setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        onBackPressed();
+                        finish();
+                    }
+                });
+        AlertDialog alert = alertBuilder.create();
+        alert.show();
     }
 
 }

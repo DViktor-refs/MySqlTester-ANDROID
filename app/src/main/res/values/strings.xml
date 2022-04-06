@@ -14,4 +14,18 @@
     <string name="btn_right"><![CDATA[>>]]></string>
     <string name="text_body">body</string>
     <string name="parse_main_title">POST form</string>
+    <string name="result1">result</string>
+    <string name="result2">result</string>
+    <string name="result3">result</string>
+    <string name="result4">result</string>
+    <string name="_000">000</string>
+    <string name="parse_form">PARSE form</string>
+    <string name="id">id</string>
+    <string name="rnd1">RND</string>
+    <string name="rnd2">RND</string>
+    <string name="parseby">ParseBy</string>
+    <string name="userid">userid</string>
+    <string name="title">Title</string>
+    <string name="rnd">RND</string>
+    <string name="parsebyback">BACK</string>
 </resources>

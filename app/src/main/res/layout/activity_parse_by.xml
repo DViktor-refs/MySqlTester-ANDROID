@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     tools:context=".views.ParseByActivity">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="id"
+        android:text="@string/id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,7 +22,7 @@
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="userid"
+        android:text="@string/userid"
         app:layout_constraintStart_toStartOf="@+id/tv_parseby_id"
         app:layout_constraintTop_toBottomOf="@+id/tv_parseby_id" />
 
@@ -30,7 +31,7 @@
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Title"
+        android:text="@string/title"
         app:layout_constraintStart_toStartOf="@+id/tv_parseby_userid"
         app:layout_constraintTop_toBottomOf="@+id/tv_parseby_userid" />
 
@@ -41,11 +42,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:focusableInTouchMode="true"
+        android:inputType="numberSigned"
         app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_id"
         app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
         app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
-        app:layout_constraintTop_toTopOf="@+id/tv_parseby_id" />
+        app:layout_constraintTop_toTopOf="@+id/tv_parseby_id"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/et_parseby_userid"
@@ -54,11 +57,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:focusableInTouchMode="true"
+        android:inputType="number"
+        android:numeric="signed"
         app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_userid"
         app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
         app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
-        app:layout_constraintTop_toTopOf="@+id/tv_parseby_userid" />
+        app:layout_constraintTop_toTopOf="@+id/tv_parseby_userid"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/et_parseby_title"
@@ -67,18 +73,20 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:focusableInTouchMode="true"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_title"
         app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
         app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
-        app:layout_constraintTop_toTopOf="@+id/tv_parseby_title" />
+        app:layout_constraintTop_toTopOf="@+id/tv_parseby_title"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/tv_parseby_id_rndtbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="RND"
+        android:text="@string/rnd"
         android:textColor="@color/design_default_color_error"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -91,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="RND"
+        android:text="@string/rnd"
         android:textColor="@color/design_default_color_error"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -104,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="RND"
+        android:text="@string/rnd"
         android:textColor="@color/design_default_color_error"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -128,10 +136,21 @@
         android:id="@+id/btn_parseby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_selector"
-        android:text="ParseBy"
+        android:text="@string/parseby"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_parsebyback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/btn_selector"
+        android:text="@string/parsebyback"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_parseby"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_parseby" />
 </androidx.constraintlayout.widget.ConstraintLayout>

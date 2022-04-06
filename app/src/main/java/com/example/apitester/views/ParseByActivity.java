@@ -2,23 +2,18 @@ package com.example.apitester.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.apitester.R;
 import com.example.apitester.databinding.ActivityParseByBinding;
 import com.example.apitester.interfaces.mvpinterfaces;
 import com.example.apitester.model_retrofit.Data;
 import com.example.apitester.model_retrofit.Parse;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -33,8 +28,21 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
         super.onCreate(savedInstanceState);
         viewBinding = ActivityParseByBinding.inflate(getLayoutInflater());
         view = viewBinding.getRoot();
+        setFullScreen();
         setContentView(view);
         initListeners();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    private void setFullScreen() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void initListeners() {
@@ -104,6 +112,13 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
             }
         });
 
+        viewBinding.btnParsebyback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         viewBinding.btnParseby.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,8 +153,8 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
         }
 
         String title=""+viewBinding.etParsebyTitle.getText().toString();
-        List<String> result = Arrays.asList(id, userId, title, "", "" );
-        return result;
+
+        return Arrays.asList(id, userId, title, "", "" );
     }
 
     public static boolean isNumeric(String str) {

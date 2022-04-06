@@ -2,7 +2,9 @@ package com.example.apitester.model_retrofit;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Data {
+import java.io.Serializable;
+
+public class Data implements Serializable {
 
     private int userId;
 

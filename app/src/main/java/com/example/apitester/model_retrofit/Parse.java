@@ -21,6 +21,12 @@ public class Parse {
     private Retrofit retrofit;
     Context context;
 
+    /**
+     * Parse eveything from JSON
+     * @param context context
+     * @param callback callback for returning List<Data> resonse
+     * @return VOID
+     */
     public void parse(Context context, mvpinterfaces.Model.RetrofitCallback callback) {
         this.context = context;
         retrofit = StartRetrofit.getRetrofit();
@@ -45,6 +51,13 @@ public class Parse {
         });
     }
 
+    /**
+     * Parse selected fields from JSON
+     * @param params List<String> of prameters (id, userId, title, sort, order
+     * @param context context
+     * @param callback callback for returning List<Data> resonse
+     * @return VOID
+     */
     public void parseBy(List<String> params, Context context, mvpinterfaces.Model.RetrofitCallback callback) {
         this.context = context;
         retrofit = StartRetrofit.getRetrofit();
@@ -67,7 +80,7 @@ public class Parse {
 
             @Override
             public void onFailure(Call<List<Data>> call, Throwable t) {
-
+                Toast.makeText(context.getApplicationContext(), "ERRORCODE: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

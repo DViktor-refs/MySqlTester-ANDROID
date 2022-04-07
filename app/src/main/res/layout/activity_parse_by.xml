@@ -7,6 +7,36 @@
     android:focusableInTouchMode="true"
     tools:context=".views.ParseByActivity">
 
+    <ImageView
+        android:id="@+id/iv_clear_id_parseby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintTop_toTopOf="@+id/tv_parseby_id_rndtbutton"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+    <ImageView
+        android:id="@+id/iv_clear_userid_parseby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_parseby_userid"
+        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintTop_toTopOf="@+id/et_parseby_userid"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+    <ImageView
+        android:id="@+id/iv_clear_title_parseby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_parseby_title"
+        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintTop_toTopOf="@+id/et_parseby_title"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
     <TextView
         android:id="@+id/tv_parseby_id"
         android:layout_width="75dp"
@@ -40,12 +70,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="12dp"
         android:ems="10"
         android:focusableInTouchMode="true"
         android:inputType="numberSigned"
+        android:numeric="integer"
         app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_id"
-        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintEnd_toStartOf="@+id/iv_clear_id_parseby"
         app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
         app:layout_constraintTop_toTopOf="@+id/tv_parseby_id"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -55,13 +86,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="12dp"
         android:ems="10"
         android:focusableInTouchMode="true"
         android:inputType="number"
-        android:numeric="signed"
+        android:numeric="integer"
         app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_userid"
-        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintEnd_toStartOf="@+id/iv_clear_userid_parseby"
         app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
         app:layout_constraintTop_toTopOf="@+id/tv_parseby_userid"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -71,12 +102,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="12dp"
         android:ems="10"
         android:focusableInTouchMode="true"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/tv_parseby_title"
-        app:layout_constraintEnd_toStartOf="@+id/tv_parseby_id_rndtbutton"
+        app:layout_constraintEnd_toStartOf="@+id/iv_clear_title_parseby"
         app:layout_constraintStart_toEndOf="@+id/tv_parseby_id"
         app:layout_constraintTop_toTopOf="@+id/tv_parseby_title"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />

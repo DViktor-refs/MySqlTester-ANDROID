@@ -46,8 +46,30 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
     }
 
     private void initListeners() {
-
         Random rnd = new Random();
+
+        //<editor-fold desc="clear edittext row events">
+        viewBinding.ivClearIdParseby.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewBinding.etParsebyId.setText("");
+            }
+        });
+
+        viewBinding.ivClearUseridParseby.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewBinding.etParsebyUserid.setText("");
+            }
+        });
+
+        viewBinding.ivClearTitleParseby.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewBinding.etParsebyTitle.setText("");
+            }
+        });
+        //</editor-fold>
 
         viewBinding.tvParsebyIdRndtbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +86,7 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
 
                     @Override
                     public void onFailure(String message) {
-                        Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -85,7 +107,7 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
 
                     @Override
                     public void onFailure(String message) {
-                        Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -106,7 +128,7 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
 
                     @Override
                     public void onFailure(String message) {
-                        Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -133,7 +155,7 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
 
                     @Override
                     public void onFailure(String message) {
-                        Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "ERROR: " + message, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -157,7 +179,7 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
         return Arrays.asList(id, userId, title, "", "" );
     }
 
-    public static boolean isNumeric(String str) {
+    private static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
             return true;

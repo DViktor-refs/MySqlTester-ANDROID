@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".views.MainActivity">
 
+    <ImageView
+        android:id="@+id/iv_clear_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_body"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
     <TextView
         android:id="@+id/tv_main_title"
         android:layout_width="wrap_content"
@@ -53,7 +63,7 @@
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/text_title"
+        android:text="@string/text_body"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/tv_id"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -63,14 +73,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/et_id_hint"
         android:inputType="number|text"
         android:minHeight="48dp"
         android:numeric="decimal"
         app:layout_constraintBottom_toBottomOf="@+id/tv_id"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_clear_id"
         app:layout_constraintStart_toEndOf="@+id/tv_id"
         app:layout_constraintTop_toTopOf="@+id/tv_id"
         app:layout_constraintVertical_bias="0.478" />
@@ -80,14 +90,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/et_userid_hint"
         android:inputType="number|text"
         android:minHeight="48dp"
         android:numeric="decimal"
         app:layout_constraintBottom_toBottomOf="@+id/tv_userid"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_clear_userid"
         app:layout_constraintStart_toEndOf="@+id/tv_id"
         app:layout_constraintTop_toTopOf="@+id/tv_userid"
         app:layout_constraintVertical_bias="0.478" />
@@ -97,13 +107,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="@string/et_title_hint"
         android:inputType="text"
         android:minHeight="48dp"
-        android:hint="@string/et_title_hint"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_clear_title"
         app:layout_constraintStart_toEndOf="@+id/tv_id"
         app:layout_constraintTop_toTopOf="@+id/tv_title"
         app:layout_constraintVertical_bias="0.478" />
@@ -113,13 +123,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="@string/et_body_hint"
         android:inputType="text"
         android:minHeight="48dp"
-        android:hint="@string/et_body_hint"
         app:layout_constraintBottom_toBottomOf="@+id/tv_body"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_clear_body"
         app:layout_constraintStart_toEndOf="@+id/tv_id"
         app:layout_constraintTop_toTopOf="@+id/tv_body"
         app:layout_constraintVertical_bias="0.478" />
@@ -131,6 +141,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/btn_selector"
+        android:drawableRight="@drawable/ic_baseline_expand"
         android:text="@string/btn_parse_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_body" />
@@ -141,6 +152,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="@drawable/btn_selector"
+
+        android:drawableRight="@drawable/ic_tick"
         android:text="POST"
         app:layout_constraintBottom_toBottomOf="@+id/btn_parse"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,11 +165,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_selector"
+        android:drawableRight="@drawable/ic_baseline_expand"
         android:text="Parseby"
         app:layout_constraintBottom_toBottomOf="@+id/btn_parse"
         app:layout_constraintEnd_toStartOf="@+id/btn_post"
         app:layout_constraintStart_toEndOf="@+id/btn_parse"
         app:layout_constraintTop_toTopOf="@+id/btn_parse"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/iv_clear_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_id"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+    <ImageView
+        android:id="@+id/iv_clear_userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_userid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_userid"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+    <ImageView
+        android:id="@+id/iv_clear_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_title"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

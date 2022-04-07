@@ -64,6 +64,44 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     private void initListeners() {
 
+        viewBinding.tvMainTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, SplashScreen.class);
+                startActivity(i);
+            }
+        });
+
+        //<editor-fold desc="clear edittext row events">
+        viewBinding.ivClearId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewBinding.etId.setText("");
+            }
+        });
+
+        viewBinding.ivClearUserid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewBinding.etUserid.setText("");
+            }
+        });
+
+        viewBinding.ivClearTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewBinding.etTitle.setText("");
+            }
+        });
+
+        viewBinding.ivClearBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewBinding.etBody.setText("");
+            }
+        });
+        //</editor-fold>
+
         viewBinding.btnParse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -6,10 +6,11 @@
         <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/drawable-v24/btn_parseby_pressed.xml" value="0.18385416666666668" />
         <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/drawable-v24/btn_parseby_selector.xml" value="0.18385416666666668" />
         <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/drawable/btn_parseby.xml" value="0.18385416666666668" />
-        <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_main2.xml" value="0.20697463768115942" />
         <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_parse.xml" value="0.2" />
-        <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_parse_by.xml" value="0.4" />
+        <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_parse_by.xml" value="0.264" />
+        <entry key="..\:/opencv/opencv/build/APItester/app/src/main/res/layout/activity_splash_screen.xml" value="0.24456521739130435" />
       </map>
     </option>
   </component>

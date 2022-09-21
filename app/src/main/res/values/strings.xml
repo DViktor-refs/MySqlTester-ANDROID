@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">MySqlTester</string>
+
+    <string-array name="mainmenuspinneritems">
+        <item>Test server</item>
+        <item>Create Table</item>
+        <item>Drop Table</item>
+        <item>Select From</item>
+        <item>Insert Into</item>
+    </string-array>
+
+    <string-array name="ct_variables_spinneritems">
+        <item>VARCHAR(10)</item>
+        <item>VARCHAR(30)</item>
+        <item>VARCHAR</item>
+        <item>INT</item>
+        <item>TINYINT(1)</item>
+        <item>DATE</item>
+        <item>TIME</item>
+        <item>DATETIME</item>
+        <item>TINYINT</item>
+
+    </string-array>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/insertintorootlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/insert_layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insert Into"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/insert_tv_selection"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/insert_et_tablename"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="8"
+            android:ems="10"
+            android:hint="Table name"
+            android:inputType="text"
+            android:maxLength="30" />
+
+        <Button
+            android:id="@+id/insert_btn_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@android:drawable/ic_menu_search"
+            android:backgroundTint="@color/white"
+            android:backgroundTintMode="add"
+            android:drawableTintMode="add"
+            android:foregroundTint="@color/white"
+            android:foregroundTintMode="add"
+            app:iconTint="@color/white"
+            app:iconTintMode="add" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/insert_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/insert_tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/insert_btn_run"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RUN" />
+
+    <TextView
+        android:id="@+id/insert_tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+
+
+</LinearLayout>

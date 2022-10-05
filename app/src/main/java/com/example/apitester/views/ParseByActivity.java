@@ -1,8 +1,6 @@
 package com.example.apitester.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,16 +18,14 @@ import java.util.Random;
 
 public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.Model{
 
-    ActivityParseByBinding viewBinding;
-    View view;
+    private ActivityParseByBinding viewBinding;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewBinding = ActivityParseByBinding.inflate(getLayoutInflater());
-        view = viewBinding.getRoot();
         setFullScreen();
-        setContentView(view);
+        initViewBinding();
         initListeners();
     }
 
@@ -37,6 +33,12 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    private void initViewBinding() {
+        viewBinding = ActivityParseByBinding.inflate(getLayoutInflater());
+        view = viewBinding.getRoot();
+        setContentView(view);
     }
 
     private void setFullScreen() {
@@ -49,132 +51,104 @@ public class ParseByActivity extends AppCompatActivity implements mvpinterfaces.
         Random rnd = new Random();
 
         //<editor-fold desc="clear edittext row events">
-        viewBinding.ivClearIdParseby.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewBinding.etParsebyId.setText("");
-            }
+        viewBinding.ivClearIdParseby.setOnClickListener(v -> viewBinding.etParsebyId.setText(""));
+
+        viewBinding.ivClearUseridParseby.setOnClickListener(v -> viewBinding.etParsebyUserid.setText(""));
+
+        viewBinding.ivClearTitleParseby.setOnClickListener(v -> viewBinding.etParsebyTitle.setText(""));
+        //</editor-fold>
+
+        //<editor-fold desc="Random button listeners">
+        viewBinding.tvParsebyIdRndtbutton.setOnClickListener(v -> {
+            Parse p = new Parse();
+            p.parse(getApplicationContext(), new RetrofitCallback() {
+                @Override
+                public void onSuccess(List<Data> data) {
+                    if (data.size() > 0) {
+                        int random = rnd.nextInt(data.size());
+                        viewBinding.etParsebyId.setText(String.valueOf(data.get(random).getId()));
+                    }
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
-        viewBinding.ivClearUseridParseby.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewBinding.etParsebyUserid.setText("");
-            }
+        viewBinding.tvParsebyUseridRndtbutton.setOnClickListener(v -> {
+            Parse p = new Parse();
+            p.parse(getApplicationContext(), new RetrofitCallback() {
+                @Override
+                public void onSuccess(List<Data> data) {
+                    if (data.size() > 0) {
+                        int random = rnd.nextInt(data.size());
+                        viewBinding.etParsebyUserid.setText(String.valueOf(data.get(random).getUserId()));
+                    }
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
-        viewBinding.ivClearTitleParseby.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewBinding.etParsebyTitle.setText("");
-            }
+        viewBinding.tvParsebyTitleRndtbutton.setOnClickListener(v -> {
+            Parse p = new Parse();
+            p.parse(getApplicationContext(), new RetrofitCallback() {
+                @Override
+                public void onSuccess(List<Data> data) {
+                    if (data.size() > 0) {
+                        int random = rnd.nextInt(data.size());
+                        viewBinding.etParsebyTitle.setText(String.valueOf(data.get(random).getTitle()));
+                    }
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
+                }
+            });
         });
         //</editor-fold>
 
-        viewBinding.tvParsebyIdRndtbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Parse p = new Parse();
-                p.parse(getApplicationContext(), new RetrofitCallback() {
-                    @Override
-                    public void onSuccess(List<Data> data) {
-                        if (data.size() > 0) {
-                            int random = rnd.nextInt(data.size());
-                            viewBinding.etParsebyId.setText(String.valueOf(data.get(random).getId()));
-                        }
-                    }
+        //<editor-fold desc="Button listeners">
+        viewBinding.btnParsebyback.setOnClickListener(v -> finish());
 
-                    @Override
-                    public void onFailure(String message) {
-                        Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+        viewBinding.btnParseby.setOnClickListener(v -> {
+            Parse p = new Parse();
+            p.parseBy(fillParamList(), getApplicationContext(), new RetrofitCallback() {
+                @Override
+                public void onSuccess(List<Data> data) {
+                    Log.d("result data length: ", ""+data.size());
+                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, data);
+                    viewBinding.scrollviewParseby.setAdapter(adapter);
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Toast.makeText(getApplicationContext(), "ERROR: " + message, Toast.LENGTH_SHORT).show();
+                }
+            });
         });
-
-        viewBinding.tvParsebyUseridRndtbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Parse p = new Parse();
-                p.parse(getApplicationContext(), new RetrofitCallback() {
-                    @Override
-                    public void onSuccess(List<Data> data) {
-                        if (data.size() > 0) {
-                            int random = rnd.nextInt(data.size());
-                            viewBinding.etParsebyUserid.setText(String.valueOf(data.get(random).getUserId()));
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-                        Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-
-        viewBinding.tvParsebyTitleRndtbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Parse p = new Parse();
-                p.parse(getApplicationContext(), new RetrofitCallback() {
-                    @Override
-                    public void onSuccess(List<Data> data) {
-                        if (data.size() > 0) {
-                            int random = rnd.nextInt(data.size());
-                            viewBinding.etParsebyTitle.setText(String.valueOf(data.get(random).getTitle()));
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-                        Toast.makeText(getApplicationContext(), "ERROR" + message, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-
-        viewBinding.btnParsebyback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        viewBinding.btnParseby.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Parse p = new Parse();
-                p.parseBy(fillParamList(), getApplicationContext(), new RetrofitCallback() {
-                    @Override
-                    public void onSuccess(List<Data> data) {
-                        Log.d("result data length: ", ""+data.size());
-                        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, data);
-                        viewBinding.scrollviewParseby.setAdapter(adapter);
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-                        Toast.makeText(getApplicationContext(), "ERROR: " + message, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+        //</editor-fold>
     }
 
     private List<String> fillParamList() {
 
-        String id=""+viewBinding.etParsebyId.getText().toString();
+        String id = "" + viewBinding.etParsebyId.getText().toString();
         if (!isNumeric(id)) {
             id = "";
         }
 
-        String userId=""+viewBinding.etParsebyUserid.getText().toString();
+        String userId = "" + viewBinding.etParsebyUserid.getText().toString();
         if (!isNumeric(userId)) {
             userId = "";
         }
 
-        String title=""+viewBinding.etParsebyTitle.getText().toString();
+        String title = "" + viewBinding.etParsebyTitle.getText().toString();
 
         return Arrays.asList(id, userId, title, "", "" );
     }

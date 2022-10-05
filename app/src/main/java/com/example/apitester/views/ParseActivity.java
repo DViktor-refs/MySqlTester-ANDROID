@@ -1,12 +1,11 @@
 package com.example.apitester.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -18,25 +17,21 @@ import java.util.List;
 
 public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Model {
 
-    ActivityParseBinding viewBinding;
-    int counter;
-    int dataSize=0;
-    Handler handler = new Handler();
-    View view;
+    private ActivityParseBinding viewBinding;
+    private final Handler handler = new Handler();
 
     public static final int PAGING_DELAY_NORMAL = 150;
     public static final int PAGING_DELAY_SLOW = 250;
     public static final int PAGING_DELAY_FAST = 50;
 
+    private int counter = 0;
+    private int dataSize=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewBinding = ActivityParseBinding.inflate(getLayoutInflater());
-        view = viewBinding.getRoot();
         setfullScreen();
-        setContentView(view);
-        counter = 0;
+        initViewBinding();
         update();
         initListeners();
     }
@@ -45,6 +40,12 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    private void initViewBinding() {
+        viewBinding = ActivityParseBinding.inflate(getLayoutInflater());
+        ConstraintLayout view = viewBinding.getRoot();
+        setContentView(view);
     }
 
     private void setfullScreen() {
@@ -56,38 +57,29 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
 
     @SuppressLint("ClickableViewAccessibility")
     private void initListeners() {
-        viewBinding.btnParseactivityBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
+        viewBinding.btnParseactivityBack.setOnClickListener(v -> finish());
+
+        //<editor-fold desc="+/- button listeners">
+        viewBinding.btnRight.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                increase.run();
             }
+            else if ((event.getAction() == MotionEvent.ACTION_CANCEL) || (event.getAction() == MotionEvent.ACTION_UP)) {
+                handler.removeCallbacks(increase);
+            }
+            return false;
         });
 
-        viewBinding.btnRight.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    increase.run();
-                }
-                else if ((event.getAction() == MotionEvent.ACTION_CANCEL) || (event.getAction() == MotionEvent.ACTION_UP)) {
-                    handler.removeCallbacks(increase);
-                }
-                return false;
+        viewBinding.btnLeft.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                decrease.run();
             }
-        });
-
-        viewBinding.btnLeft.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    decrease.run();
-                }
-                else if ((event.getAction() == MotionEvent.ACTION_CANCEL) || (event.getAction() == MotionEvent.ACTION_UP)) {
-                    handler.removeCallbacks(decrease);
-                }
-                return false;
+            else if ((event.getAction() == MotionEvent.ACTION_CANCEL) || (event.getAction() == MotionEvent.ACTION_UP)) {
+                handler.removeCallbacks(decrease);
             }
+            return false;
         });
+        //</editor-fold>
     }
 
     private void update() {
@@ -107,11 +99,11 @@ public class ParseActivity extends AppCompatActivity implements mvpinterfaces.Mo
     }
 
     private void setTextViewsFromData(List<Data> data) {
-        viewBinding.tvCounter.setText(""+(counter+1));
-        viewBinding.tvIdresult.setText(""+data.get(counter).getId());
-        viewBinding.tvUseridresult.setText(""+data.get(counter).getUserId());
-        viewBinding.tvTitleresult.setText(""+data.get(counter).getTitle());
-        viewBinding.tvBodyresult.setText(""+data.get(counter).getText());
+        viewBinding.tvCounter.setText(" "+ (counter+1));
+        viewBinding.tvIdresult.setText("" + data.get(counter).getId());
+        viewBinding.tvUseridresult.setText("" + data.get(counter).getUserId());
+        viewBinding.tvTitleresult.setText("" + data.get(counter).getTitle());
+        viewBinding.tvBodyresult.setText("" + data.get(counter).getText());
     }
 
     Runnable increase = new Runnable() {

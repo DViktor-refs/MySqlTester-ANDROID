@@ -14,8 +14,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
 
     buildTypes {
@@ -56,6 +58,10 @@ dependencies {
 
     //Animation
     implementation "com.andkulikov:transitionseverywhere:2.0.0"
+
+    //okHTTP
+    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+
 
 
 

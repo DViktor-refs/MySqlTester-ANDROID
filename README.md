@@ -9,4 +9,4 @@ It can :
 - select from
 - insert into
 
-( The data which required to login is deliberately burned into the code! )
+( The data which required to login is deliberately burned into the code and I left the server open on purpose! )
